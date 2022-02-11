@@ -2,6 +2,8 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    id("com.squareup.sqldelight")
+    id("com.google.gms.google-services")
 }
 
 version = "1.0"
@@ -23,7 +25,30 @@ kotlin {
     }
     
     sourceSets {
-        val commonMain by getting
+        val coroutinesVer = "1.5.2"
+        val sqldelightVer = "1.5.3"
+        val firebaseVer = "1.4.3"
+
+        val commonMain by getting {
+            dependencies {
+                // Coroutines
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVer")
+
+                // Datetime
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.2.1")
+
+                // Serialization
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
+
+                // SQLDelight
+                implementation("com.squareup.sqldelight:runtime:$sqldelightVer")
+
+                // Firebase modules
+                implementation("dev.gitlive:firebase-auth:$firebaseVer")
+                implementation("dev.gitlive:firebase-firestore:$firebaseVer")
+            }
+        }
+
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))
