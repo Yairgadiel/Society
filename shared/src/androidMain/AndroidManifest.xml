@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.gy.society" />
+<manifest package="com.gy.society"
+    xmlns:myApp="http://schemas.android.com/apk/res/android">
+    <uses-feature myApp:name="android.hardware.camera" myApp:required="true" />
+
+</manifest>

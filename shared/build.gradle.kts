@@ -46,6 +46,8 @@ kotlin {
                 // Firebase modules
                 implementation("dev.gitlive:firebase-auth:$firebaseVer")
                 implementation("dev.gitlive:firebase-firestore:$firebaseVer")
+                implementation("com.google.android.gms:play-services-mlkit-text-recognition:18.0.0")
+
             }
         }
 
@@ -55,7 +57,12 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                implementation("com.google.android.gms:play-services-mlkit-text-recognition:18.0.0")
+
+            }
+        }
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
@@ -89,5 +96,6 @@ android {
     defaultConfig {
         minSdk = 21
         targetSdk = 32
+        multiDexEnabled = true
     }
 }
